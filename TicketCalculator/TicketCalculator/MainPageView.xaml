@@ -6,9 +6,16 @@
   <ContentPage.BindingContext>
     <ticketCalculator:MainPageViewModel></ticketCalculator:MainPageViewModel>
   </ContentPage.BindingContext>
+  <ContentPage.Resources>
+    <ResourceDictionary>
+      <Style TargetType="Entry" >
+        <Setter Property="Keyboard" Value="Numeric"/>
+      </Style>
+    </ResourceDictionary>
+  </ContentPage.Resources>
   <StackLayout  HorizontalOptions="Center">
     <Label Text="Ticket Value"/>
-    <Entry Text="{Binding TicketValue}"/>
+    <Entry  Text="{Binding TicketValue}"/>
 
     <Label Text="Price"/>
     <Entry Text="{Binding Price}"/>
