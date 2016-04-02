@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Input;
+using Plugin.Settings;
+using TicketCalculator.Helpers;
 using Xamarin.Forms;
 
 namespace TicketCalculator
@@ -10,27 +12,29 @@ namespace TicketCalculator
         public MainPageViewModel()
         {
             this.ComputeCommand = new Command(this.Compute);
+            
         }
-        private decimal ticketValue;
 
-        public decimal TicketValue
+        private double ticketValue;
+        public double TicketValue
         {
             get
             {
-                return ticketValue;
+                return Settings.TicketValue;
             }
             set
             {
                 if (this.ticketValue != value)
                 {
+                    Settings.TicketValue = value;
                     this.ticketValue = value;
                     this.NotifyPropertyChanged("TicketValue");
                 }
             }
         }
 
-        private decimal price;
-        public decimal Price
+        private double price;
+        public double Price
         {
             get { return price; }
             set
@@ -43,8 +47,8 @@ namespace TicketCalculator
             }
         }
 
-        private decimal ticketsNumber;
-        public decimal TicketsNumber
+        private int ticketsNumber;
+        public int TicketsNumber
         {
             get { return this.ticketsNumber; }
             set
@@ -58,9 +62,9 @@ namespace TicketCalculator
         }
 
 
-        private decimal reste;
+        private double reste;
 
-        public decimal Reste
+        public double Reste
         {
             get
             {
@@ -85,9 +89,9 @@ namespace TicketCalculator
 
         private void Compute()
         {
-            if (this.TicketValue == 0) return;
+            if ((int)this.TicketValue <= 0) return;
             var number = Math.Truncate(this.Price/this.TicketValue);
-            this.TicketsNumber = number;
+            this.TicketsNumber = (int)number;
             this.Reste = this.Price - number * this.TicketValue;
         }
 
