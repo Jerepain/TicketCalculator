@@ -47,8 +47,8 @@ namespace TicketCalculator
             }
         }
 
-        private int ticketsNumber;
-        public int TicketsNumber
+        private double ticketsNumber;
+        public double TicketsNumber
         {
             get { return this.ticketsNumber; }
             set
@@ -90,9 +90,11 @@ namespace TicketCalculator
         private void Compute()
         {
             if ((int)this.TicketValue <= 0) return;
-            var number = Math.Truncate(this.Price/this.TicketValue);
-            this.TicketsNumber = (int)number;
-            this.Reste = this.Price - number * this.TicketValue;
+            this.TicketsNumber = Math.Truncate(this.Price / this.TicketValue);
+            var ticketsValue = this.TicketsNumber * this.TicketValue;
+
+            double r = this.Price - ticketsValue;
+            this.Reste = r;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

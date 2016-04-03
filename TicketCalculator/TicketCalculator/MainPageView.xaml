@@ -13,7 +13,7 @@
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <StackLayout  HorizontalOptions="Center">
+  <StackLayout HorizontalOptions="Center" Padding="0,20,0,0">
     <Label Text="Ticket Value"/>
     <Entry  Text="{Binding TicketValue}"/>
 
@@ -24,7 +24,7 @@
     <Label Text="Number of tickets to give"/>
     <Label Text="{Binding TicketsNumber, StringFormat='{0}'}"/>
 
-    <Label Text="Reste"/>
+    <Label Text="To pay"/>
     <Label Text="{Binding Reste, StringFormat='{0}'}"/>
   </StackLayout>
 </ContentPage>
