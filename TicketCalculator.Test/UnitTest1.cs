@@ -10,10 +10,16 @@ namespace TicketCalculator.Test
         [TestMethod]
         public void TestMethod1()
         {
-            var vm = new MainPageViewModel();
-            ICommand c = vm.ComputeCommand;
+            var vm = new MainPageViewModel
+            {
+                TicketValue = 10,
+                Price = 21
+            };
 
-
+            var c = vm.ComputeCommand;
+            c.Execute(this);
+            Assert.AreEqual(1, vm.Reste);
+            Assert.AreEqual(2, vm.TicketsNumber);
         }
     }
 }
