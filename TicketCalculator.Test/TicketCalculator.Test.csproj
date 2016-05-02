@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Plugin.Settings, Version=2.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xam.Plugins.Settings.2.1.0\lib\net45\Plugin.Settings.dll</HintPath>
       <Private>True</Private>
@@ -62,6 +63,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.fsproj">
+      <Project>{e55a3fc6-a264-49ad-9a1d-753a6cf460c9}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TicketCalculator\TicketCalculator\TicketCalculator.csproj">
       <Project>{e6cbf7cc-74c7-4afe-863e-4d2f30ad8c78}</Project>
       <Name>TicketCalculator</Name>
