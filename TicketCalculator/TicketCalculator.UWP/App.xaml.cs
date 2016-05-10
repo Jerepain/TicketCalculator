@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -58,7 +59,30 @@ namespace TicketCalculator.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                Xamarin.Forms.Forms.Init(e);
+
+
+                //https://forums.xamarin.com/discussion/57179/uwp-immediate-crash-in-release-mode
+                //https://bugzilla.xamarin.com/show_bug.cgi?id=37658
+                // you'll need to add `using System.Reflection;`
+                   List<Assembly> assembliesToInclude = new List<Assembly>();
+
+                //Now, add in all the assemblies your app uses
+                assembliesToInclude.Add(typeof(Plugin.Settings.CrossSettings).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Plugin.Settings.SettingsImplementation).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(Plugin.Settings.Abstractions.ISettings).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(TicketCalculator.App).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(TicketCalculator.MainPageViewModel).GetTypeInfo().Assembly);
+                assembliesToInclude.Add(typeof(TicketCalculator.MainPageView).GetTypeInfo().Assembly);
+
+                //Also do this for all your other 3rd party libraries
+
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+                Xamarin.Forms.DependencyService.Register<Plugin.Settings.Abstractions.ISettings>(); // add this
+                Xamarin.Forms.DependencyService.Register<TicketCalculator.App>(); // add this
+                Xamarin.Forms.DependencyService.Register<TicketCalculator.MainPageViewModel>(); // add this
+                Xamarin.Forms.DependencyService.Register<TicketCalculator.MainPageView>(); // add this
+                Xamarin.Forms.DependencyService.Register<Plugin.Settings.SettingsImplementation>(); // add this
+                //Xamarin.Forms.Forms.Init(e);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
