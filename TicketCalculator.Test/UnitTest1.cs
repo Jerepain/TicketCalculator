@@ -33,9 +33,7 @@ namespace TicketCalculator.Test
             var vm = new MainPageViewModel();
             vm.TicketValue = 10;
             vm.Price = 21;
-           
-            var c = vm.ComputeCommand;
-            c.Execute(this);
+         
             Assert.AreEqual(1, vm.Reste);
             Assert.AreEqual(2, vm.TicketsNumber);
         }
@@ -45,9 +43,7 @@ namespace TicketCalculator.Test
             var vm = new MainPageViewModel();
             vm.TicketValue = 10;
             vm.Price = 0;
-           
-            var c = vm.ComputeCommand;
-            c.Execute(this);
+         
             Assert.AreEqual(0, vm.Reste);
             Assert.AreEqual(0, vm.TicketsNumber);
         }
@@ -57,9 +53,7 @@ namespace TicketCalculator.Test
             var vm = new MainPageViewModel();
             vm.TicketValue = 0;
             vm.Price = 0;
-           
-            var c = vm.ComputeCommand;
-            c.Execute(this);
+          
             Assert.AreEqual(0, vm.Reste);
             Assert.AreEqual(0, vm.TicketsNumber);
         }
@@ -69,9 +63,7 @@ namespace TicketCalculator.Test
             var vm = new MainPageViewModel();
             vm.TicketValue = 0;
             vm.Price = 10;
-           
-            var c = vm.ComputeCommand;
-            c.Execute(this);
+
             Assert.AreEqual(0, vm.Reste);
             Assert.AreEqual(0, vm.TicketsNumber);
         }
