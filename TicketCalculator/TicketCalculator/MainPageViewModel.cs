@@ -1,8 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Windows.Input;
 using TicketCalculator.Helpers;
-using Xamarin.Forms;
 
 namespace TicketCalculator
 {
@@ -10,7 +8,6 @@ namespace TicketCalculator
     {
         public MainPageViewModel()
         {
-            this.ComputeCommand = new Command(this.Compute);
             this.TicketValue = Settings.TicketValue;
         }
 
@@ -24,6 +21,7 @@ namespace TicketCalculator
                 {
                     Settings.TicketValue = this.ticketValue = value;
                     this.NotifyPropertyChanged("TicketValue");
+                    this.Compute();
                 }
             }
         }
@@ -38,6 +36,7 @@ namespace TicketCalculator
                 {
                     this.price = value;
                     this.NotifyPropertyChanged("Price");
+                    this.Compute();
                 }
             }
         }
@@ -74,8 +73,6 @@ namespace TicketCalculator
                 }
             }
         }
-        
-        public ICommand ComputeCommand { protected set; get; }
 
         protected virtual void NotifyPropertyChanged(string info)
         {

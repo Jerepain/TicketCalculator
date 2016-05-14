@@ -19,8 +19,9 @@
 
     <Label Text="Price"/>
     <Entry Text="{Binding Price}"/>
-    <Button Command="{Binding ComputeCommand}" Text="Compute"/>
 
+    <BoxView Color="White" WidthRequest="100" HeightRequest="2"/>
+    
     <Label Text="Number of tickets to give"/>
     <Label Text="{Binding TicketsNumber, StringFormat='{0}'}"/>
 
