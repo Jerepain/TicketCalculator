@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ticketcalculator.ticketcalculator" android:installLocation="auto" android:versionCode="2" android:versionName="2.0">
-	<uses-sdk android:minSdkVersion="15" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="ticketcalculator.ticketcalculator" android:installLocation="auto" android:versionCode="3" android:versionName="3.0">
+	<uses-sdk android:minSdkVersion="14" />
 	<application android:label="Ticket Calculator" android:icon="@drawable/icon"></application>
 </manifest>
