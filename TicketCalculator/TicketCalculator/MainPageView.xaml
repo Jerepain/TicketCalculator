@@ -13,19 +13,30 @@
       </Style>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <StackLayout HorizontalOptions="Center" Padding="0,20,0,0">
-    <Label Text="Ticket Value"/>
-    <Entry  Text="{Binding TicketValue}"/>
 
-    <Label Text="Price"/>
-    <Entry Text="{Binding Price}"/>
 
-    <BoxView Color="White" WidthRequest="100" HeightRequest="2"/>
+
+  <StackLayout HorizontalOptions="Center" Padding="0,20,0,0" >
+
+    <Frame OutlineColor="Gray" >
+      <StackLayout>
+        <Label Text="Ticket Value"/>
+        <Entry  Text="{Binding TicketValue}"/>
+
+        <Label Text="Price"/>
+        <Entry Text="{Binding Price}"/>
+      </StackLayout>
+    </Frame>
     
-    <Label Text="Number of tickets to give"/>
-    <Label Text="{Binding TicketsNumber, StringFormat='{0}'}"/>
 
-    <Label Text="To pay"/>
-    <Label Text="{Binding Reste, StringFormat='{0}'}"/>
+    <Frame OutlineColor="Green" >
+      <StackLayout>
+        <Label Text="Number of tickets to give"/>
+        <Label Text="{Binding TicketsNumber, StringFormat='{0}'}"/>
+
+        <Label Text="To pay"/>
+        <Label Text="{Binding Reste, StringFormat='{0}'}"/>
+      </StackLayout>
+    </Frame>
   </StackLayout>
 </ContentPage>
